@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import axios from 'axios';
+import routes from "./routes";
+import { setRecipes, updateUsername } from './store/reducer';
+import "./App.css";
+import Nav from "./components/Nav/Nav";
 
-function App() {
+function App(props) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get('/api/recipes')
+      .then(response => props.setRecipes(response.data))
+
+    axios
+      .get('/auth/user')
+      .then(response => dispatch(updateUsername(response.data)))
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      {routes}
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  setRecipes,
+}
+
+export default connect(undefined, mapDispatchToProps)(App);
+
+// redux
+// express-session
+// build and serving from back end

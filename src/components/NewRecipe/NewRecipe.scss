@@ -1,0 +1,15 @@
+.new_recipe__ {
+  &container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  &form {
+    width: 800px;
+    height: 800px;
+    background: pink;
+    margin-top: 20px;
+    border-radius: 7px;
+    border: 2px solid rgb(255, 160, 176);
+  }
+}

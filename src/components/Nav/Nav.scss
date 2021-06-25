@@ -1,0 +1,31 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+.nav__ {
+  &container {
+    @include flex-center(flex-end);
+    width: 100vw;
+    height: 60px;
+    background: $site-color-1;
+    &--link {
+      @include flex-center(space-around, center);
+      height: 100%;
+      margin-right: 100px;
+      width: 550px;
+      & > a {
+        @include flex-center(center, center);
+        background: $site-color-2;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        font-family: 'PT Sans', sans-serif;
+        font-size: 20px;
+        text-decoration: none;
+        color: black;
+        &:hover {
+          background: $site-color-3;
+        }
+      }
+    }
+  }
+}
